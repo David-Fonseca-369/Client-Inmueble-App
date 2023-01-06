@@ -1,8 +1,17 @@
 /* To learn more about this file see: https://angular.io/config/tsconfig. */
+
+/*anteriormente estaba en  "baseUrl": "./",
+pero se configurará para que apunte al src y le agregamos los paths
+Esto para poder encontrar cualquier tipo de archivo en todo el proyecto.
+*/
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "src",
+    "paths": {
+      "@app/*": ["app/*"],
+      "@src/*": ["../src/*"]
+    },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -18,11 +27,12 @@
     "importHelpers": true,
     "target": "es2020",
     "module": "es2020",
-    "lib": [
-      "es2020",
-      "dom"
-    ]
+    "lib": ["es2020", "dom"],
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   },
+
+  /*el resolve json module y el esModuleInterop es para que no tenga problemas con el JSON y pueda importar valores en JSON */
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
