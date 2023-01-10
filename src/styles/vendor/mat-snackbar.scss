@@ -1,0 +1,15 @@
+.mat-snackbar{
+
+  //Color cuando sea error
+  &_error{
+    background: $error;
+    color: $on_error;;
+  }
+
+  &_success{
+
+    //Color cuando sea exitoso
+    background: $success;
+    color: $on-success;
+  }
+}
