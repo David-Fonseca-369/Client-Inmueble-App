@@ -1,26 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AngularFirestore } from "@angular/fire/compat/firestore";
-
-
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  showSpinner = false;
+
   title = 'client-inmueble-app';
 
-
- constructor(private fs:AngularFirestore){
-
- }
+  constructor(private fs: AngularFirestore) {}
   ngOnInit(): void {
     //Acceder a una determinada colección
-    this.fs.collection('test').stateChanges().subscribe(personas => {
-      console.log(personas.map(x => x.payload.doc.data()))
-    })
+    this.fs
+      .collection('test')
+      .stateChanges()
+      .subscribe((personas) => {
+        console.log(personas.map((x) => x.payload.doc.data()));
+      });
   }
 
+  onToggleSpinner(): void {
+    this.showSpinner = !this.showSpinner;
+  }
 }
