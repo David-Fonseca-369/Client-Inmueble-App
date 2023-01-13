@@ -23,6 +23,7 @@ export class FilesUploadDirective {
 
   constructor(private dialog: MatDialog) {}
 
+  //Es un método decorador de angular que es usado para escuchar y manejar eventos del DOM
   @HostListener('click', ['event']) onClick() {
     this.openDialog();
   }
