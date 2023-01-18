@@ -36,7 +36,6 @@ export class FilesUploadComponent implements OnInit {
   //suelta imagen
   onDrop(files: FileList): void {
     this.dropGeneral(files);
-
   }
 
   onDropFiles(event: FileList | any): void {
@@ -58,7 +57,17 @@ export class FilesUploadComponent implements OnInit {
     console.log(files);
   }
 
-  onUploadComplete(url: string): void{
+  onUploadComplete(url: string): void {
     this.filesURLs.push(url);
+  }
+
+  onComplete(): void {
+    //si es multiple o solo es un archivo
+    const res = this.data.multiple ? this.filesURLs : this.filesURLs[0];
+    //devuelvo esa data al cerra el dialog
+    this.dialogRef.close(res);
+  }
+  onClose(): void {
+    this.dialogRef.close();
   }
 }

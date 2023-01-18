@@ -4,4 +4,7 @@
 <!-- Se agrega la directiva que se creo -->
 <!-- directiva creada -->
 <!-- Si está en multiple 'true' significa que puede adjuntar muchos archivos -->
-<button appFilesUpload [multiple]="true">Subir imagenes al servidor</button>
+<button appFilesUpload [multiple]="true" (changed)="onFilesChanged($event)">Subir imágenes al servidor</button>
+
+<button (click)="onSuccess()">Mensaje Éxito</button>
+<button (click)="onError()">Mensaje Error</button>
