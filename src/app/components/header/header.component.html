@@ -1,0 +1,20 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="onMenuToggleDispatch()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Edificaciones Store</span>
+
+  <!-- 'fxFlex' Pertenece al flex-library que se instaló-->
+  <!-- fxLayout='row' horizontal o 'column' vertical, es la distribución de los elementos -->
+  <!-- fxLayoutAlign="flex-end" para que se alineé a la derecha -->
+  <!-- son media queries -->
+  <!-- fxHide.xs se oculte para dispositivos móviles -->
+  <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
+    <!-- fxLayoutGap="10px" espaciado entre items -->
+    <ul fxLayout="row"  fxLayoutGap="10px" class="navegacion-menu">
+      <li><a>Registrar</a></li>
+      <li><a>Login</a></li>
+      <li><a>Home</a></li>
+    </ul>
+  </div>
+</mat-toolbar>

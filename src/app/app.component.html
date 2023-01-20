@@ -1,10 +1,14 @@
-<button (click)="onToggleSpinner()">Toggle Spinner</button>
-<app-spinner *ngIf="showSpinner"></app-spinner>
+<mat-sidenav-container>
+  <!-- Representación del drawer -->
+  <mat-sidenav #menu>
+    <app-menu-list (menuToggle)="menu.toggle()"></app-menu-list>
+  </mat-sidenav>
 
-<!-- Se agrega la directiva que se creo -->
-<!-- directiva creada -->
-<!-- Si está en multiple 'true' significa que puede adjuntar muchos archivos -->
-<button appFilesUpload [multiple]="true" (changed)="onFilesChanged($event)">Subir imágenes al servidor</button>
-
-<button (click)="onSuccess()">Mensaje Éxito</button>
-<button (click)="onError()">Mensaje Error</button>
+  <!-- contenido dinámico -->
+  <mat-sidenav-content>
+    <app-header (menuToggle)="menu.toggle()"></app-header>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
