@@ -1,13 +1,26 @@
-::ng-deep .mat-snackbar{
+:root {
+  --white-color: #fff;
+  --success-color: #198754;
+  --error-color : #B00020;
+}
+
+
+.success-snackbar {
+  color: white;
+  --mdc-snackbar-container-color: var( --success-color);
+}
+
+
+.mat-snackbar {
 
   &_error {
-    background: $error !important;
-    color: $on-error !important;
+    --mdc-snackbar-container-color: var( --error-color);
+    color: $on-error;
   }
 
   &_success {
-    background: $success !important;
-    color: $on-success !important;
+    --mdc-snackbar-container-color: var( --success-color);
+    color: $on-success;
   }
 
 
