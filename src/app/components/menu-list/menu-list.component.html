@@ -1,18 +1,18 @@
 
 <mat-nav-list>
   <!-- para que se cierre el drawer -->
-  <a mat-list-item (click)="closeMenu()">
+  <a mat-list-item (click)="closeMenu()" routerLink="/">
     <mat-icon>home</mat-icon>
     <span class="navigation-list-label">Home</span>
   </a>
 
 
-  <a mat-list-item (click)="closeMenu()">
+  <a mat-list-item (click)="closeMenu()" routerLink="auth/login">
     <mat-icon>login</mat-icon>
     <span class="navigation-list-label">Inicio de Sesión</span>
   </a>
 
-  <a mat-list-item (click)="closeMenu()">
+  <a mat-list-item (click)="closeMenu()" routerLink="auth/registration">
     <mat-icon>how_to_register</mat-icon>
     <span class="navigation-list-label">Registrar</span>
   </a>

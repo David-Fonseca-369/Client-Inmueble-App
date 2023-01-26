@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 //Importar el paquete principal de integración con firebase
@@ -46,6 +46,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { MenuListComponent } from './components/menu-list/menu-list.component';
 
 import { MatListModule } from "@angular/material/list";
+import { AuthModule } from './pages/auth/auth.module';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, MenuListComponent],
@@ -71,9 +72,11 @@ import { MatListModule } from "@angular/material/list";
     MatIconModule,
     MatButtonModule,
     FlexLayoutModule,
-    MatListModule
+    MatListModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent],
+
 })
 export class AppModule {}

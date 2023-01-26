@@ -7,6 +7,11 @@ const routes: Routes = [
     //hijos
     children: [
       {
+        path: 'auth',
+        loadChildren: () =>
+          import('./pages/auth/auth.module').then((m) => m.AuthModule),
+      },
+      {
         path: 'static',
         loadChildren: () =>
           import('./pages/static/static.module').then((m) => m.StaticModule),
