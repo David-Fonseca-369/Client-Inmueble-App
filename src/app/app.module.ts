@@ -1,4 +1,8 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
+import {
+  NgModule,
+  CUSTOM_ELEMENTS_SCHEMA,
+  NO_ERRORS_SCHEMA,
+} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 //Importar el paquete principal de integración con firebase
@@ -34,19 +38,29 @@ import { PopupsModule } from './shared/popups';
 
 import { NotificationModule } from './services';
 
-import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatSidenavModule } from '@angular/material/sidenav';
 
-import {  MatToolbarModule} from "@angular/material/toolbar";
+import { MatToolbarModule } from '@angular/material/toolbar';
 
-import { MatIconModule } from "@angular/material/icon";
-import { MatButtonModule } from "@angular/material/button";
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 import { HeaderComponent } from './components/header/header.component';
 
-import { FlexLayoutModule } from "@angular/flex-layout";
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { MenuListComponent } from './components/menu-list/menu-list.component';
 
-import { MatListModule } from "@angular/material/list";
+import { MatListModule } from '@angular/material/list';
 import { AuthModule } from './pages/auth/auth.module';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { reducers, effects } from './store';
+import { StoreModule } from '@ngrx/store';
+import { HttpClientModule } from '@angular/common/http';
+
+//si no está en ambiente de producción  que el tamaño sea dinámico
+const StoreDevtools = !environment.production
+  ? StoreDevtoolsModule.instrument({ maxAge: 50 })
+  : [];
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, MenuListComponent],
@@ -73,10 +87,18 @@ import { AuthModule } from './pages/auth/auth.module';
     MatButtonModule,
     FlexLayoutModule,
     MatListModule,
-    AuthModule
+    AuthModule,
+    StoreDevtools,
+    StoreModule.forRoot(reducers, {
+      runtimeChecks: {
+        strictActionImmutability: true,
+        strictStateImmutability: true,
+      },
+    }),
+    EffectsModule.forRoot(effects),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-
 })
 export class AppModule {}
