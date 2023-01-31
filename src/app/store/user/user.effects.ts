@@ -45,11 +45,8 @@ export class UserEffects {
 
               this.notification.error("Errores al registrar nuevo usuario");
               return of(new fromActions.SignUpEmailError(err.message))
-
-            })
-
-
-          )
+          })
+        )
       )
     )
   );
@@ -91,7 +88,7 @@ export class UserEffects {
           return this.httpClient.get<UserResponse>(`${environment.url}api/usuario`)
             .pipe(
               tap((user: UserResponse) => {
-                console.log('data del usuario en sesion que viene del servidor=>', user);
+                console.log('data del usuario en sesión que viene del servidor=>', user);
               }),
               map((user: UserResponse) => new fromActions.InitAuthorized(user.email, user || null)),
               catchError(err => of(new fromActions.InitError(err.message)))
