@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { UnauthGuard } from '@app/guards/unauth/unauth.guard';
 
 const routes: Routes = [
   //referencia a los módulos de login y registratiohn
@@ -9,6 +10,7 @@ const routes: Routes = [
       import('./pages/login/login.module').then(
         (m) => m.LoginModule
       ),
+      canActivate: [UnauthGuard]
   },
   {
     path: 'registration',
@@ -16,6 +18,7 @@ const routes: Routes = [
       import('./pages/registration/registration.module').then(
         (m) => m.RegistrationModule
       ),
+      canActivate: [UnauthGuard]
   },
   {
     //Automáticamente te lleve al módulo de login para redireccionar
