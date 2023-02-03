@@ -22,6 +22,12 @@ const routes: Routes = [
         //como ya se ha referenciado arriba, ya se pueden acceder a las páginas de static.
         redirectTo: 'static/welcome',
       },
+
+      //importar lo de inmueble
+      {
+        path: 'inmueble',
+        loadChildren: ()=> import('./pages/inmueble/inmueble.module').then(m => m.InmuebleModule)
+      }
     ],
   },
   {
