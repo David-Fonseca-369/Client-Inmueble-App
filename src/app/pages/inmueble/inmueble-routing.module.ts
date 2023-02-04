@@ -5,12 +5,12 @@ import { AuthGuard } from '@app/guards/auth/auth.guard';
 const routes: Routes = [
   {
     path: 'nuevo',
-    loadChildren: ()=> import('./inmueble-nuevo/inmueble-nuevo.module').then(m => m.InmuebleNuevoModule),
+    loadChildren: ()=> import('./pages/inmueble-nuevo/inmueble-nuevo.module').then(m => m.InmuebleNuevoModule),
     canActivate: [AuthGuard]
   },
   {
     path: 'list',
-    loadChildren: ()=>  import('./inmueble-list/inmueble-list.module').then(m => m.InmuebleListModule),
+    loadChildren: ()=>  import('./pages/inmueble-list/inmueble-list.module').then(m => m.InmuebleListModule),
     canActivate: [AuthGuard]
   }
   //configurar en su padre 'app-routing'
