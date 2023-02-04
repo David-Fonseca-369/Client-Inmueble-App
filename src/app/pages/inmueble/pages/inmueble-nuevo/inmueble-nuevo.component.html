@@ -1,1 +1,80 @@
-<p>inmueble-nuevo works!</p>
+<app-spinner *ngIf="loading$ | async"></app-spinner>
+
+<mat-toolbar color="secondary">
+  <span>Registrar Nuevo Inmueble</span>
+</mat-toolbar>
+
+<section fxLayoutAlign="center">
+  <mat-card>
+    <form
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      #f="ngForm"
+      (ngSubmit)="registrarInmueble(f)"
+      fxLayoutGap="10px"
+    >
+      <div class="personal__photo">
+        <div class="photo">
+          <!-- representa a imagen que se guardó en firebase -->
+          <app-entity-photo
+            class="photo__img"
+            [photoURL]="photoLoaded"
+          ></app-entity-photo>
+          <button mat-button appFilesUpload (changed)="onFilesChanged($event)">
+            <mat-icon>upload</mat-icon>
+            Subir Imagen
+          </button>
+        </div>
+      </div>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Ingrese Nombre</mat-label>
+        <input
+          type="text"
+          matInput
+          ngModel
+          name="nombre"
+          required
+          placeholder="Ingrese nombre"
+        />
+        <mat-error>Debe ingresar un Nombre</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Ingrese Dirección</mat-label>
+        <input
+          type="text"
+          matInput
+          ngModel
+          name="direccion"
+          required
+          placeholder="Ingrese dirección"
+        />
+        <mat-error>Debe ingresar la dirección</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Ingrese Precio</mat-label>
+        <input
+          type="text"
+          matInput
+          ngModel
+          name="precio"
+          required
+          placeholder="Ingrese precio"
+        />
+        <mat-error>Debe ingresar la precio</mat-error>
+      </mat-form-field>
+
+      <!-- llama al ngSubmit del form -->
+      <button
+        type="submit"
+        mat-raised-button
+        color="primary"
+        [disabled]="f.invalid"
+      >
+        Guardar
+      </button>
+    </form>
+  </mat-card>
+</section>
