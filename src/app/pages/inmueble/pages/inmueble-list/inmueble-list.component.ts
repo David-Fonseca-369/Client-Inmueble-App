@@ -1,10 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import * as fromRoot from '@app/store';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import * as fromList from '../../store/save';
+import { InmuebleResponse } from '../../store/save';
 
 @Component({
   selector: 'app-inmueble-list',
   templateUrl: './inmueble-list.component.html',
-  styleUrls: ['./inmueble-list.component.scss']
+  styleUrls: ['./inmueble-list.component.scss'],
 })
-export class InmuebleListComponent {
+export class InmuebleListComponent implements OnInit {
+  inmuebles$!: Observable<InmuebleResponse[] | null>;
+  loading$!: Observable<boolean | null>;
+
+  pictureDefault : string = "https://firebasestorage.googleapis.com/v0/b/edificacion-app.appspot.com/o/image%2F1637099019171_O5986058_0.jpg?alt=media&token=0a146233-d63b-4702-b28d-6eaddf5e207a"
+
+  constructor(private store : Store<fromRoot.State>) {}
+  ngOnInit(): void {
+
+    //para dispararla secuencia para leer los datos del servidor
+    this.store.dispatch(new fromList.Read());
+    //estado del loading
+    this.loading$ = this.store.pipe(select(fromList.getLoading));
+    //otra consulta para obtener la data de inmuebles que está en el store de Angular
+    this.inmuebles$ = this.store.pipe(select(fromList.getInmuebles));
+  }
+
+
 
 }

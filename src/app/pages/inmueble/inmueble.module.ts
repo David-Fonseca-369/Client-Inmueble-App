@@ -2,13 +2,19 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { InmuebleRoutingModule } from './inmueble-routing.module';
+import {  StoreModule } from '@ngrx/store';
 
+import {reducers, effects} from './store';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    InmuebleRoutingModule
+    InmuebleRoutingModule,
+    //registrar mueble en el componente
+    StoreModule.forFeature('inmueble', reducers),
+    EffectsModule.forFeature(effects)
   ]
 })
 export class InmuebleModule { }

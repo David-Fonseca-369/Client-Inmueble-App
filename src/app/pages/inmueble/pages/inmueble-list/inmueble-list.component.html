@@ -1,1 +1,3 @@
-<p>inmueble-list works!</p>
+<app-spinner *ngIf="loading$ | async"></app-spinner>
+
+<pre>{{inmuebles$ | async | json}}</pre>
